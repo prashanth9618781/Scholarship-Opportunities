@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 pip install django-cors-headers
+=======
+pip install django-cors-headers
+>>>>>>> ce448217a3e986c12530c8704b3356fc81cc687d
 pip install djangorestframework
