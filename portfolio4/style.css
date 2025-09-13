@@ -1,0 +1,183 @@
+/* ==========================
+   Futuristic Glass Portfolio
+   ========================== */
+
+/* Theme variables */
+:root{
+  --bg:#0b0f16;
+  --txt:#e6f1ff;
+  --muted:#9bb0c6;
+  --accent:#64ffda;     /* neon green */
+  --accent-2:#7aa2ff;   /* neon blue */
+  --card:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.14);
+  --glass-radius:18px;
+  --glass-pad:20px;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: radial-gradient(1000px 700px at 10% 10%, #071022 0%, var(--bg) 55%) fixed;
+  color:var(--txt);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.55;
+}
+
+/* Animated background orbs */
+.bg-anim{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg-anim::before{content:'';position:absolute;inset:-10%;background:linear-gradient(120deg,#071322,#06081a);opacity:.9;animation:shift 20s ease-in-out infinite alternate}
+.orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.6}
+.orb-1{width:40vmax;height:40vmax;background:radial-gradient(circle at 30% 30%, #3fd8ff, transparent 60%);left:-12%;top:-10%;animation:float 18s ease-in-out infinite}
+.orb-2{width:34vmax;height:34vmax;background:radial-gradient(circle at 70% 40%, #7a7dff, transparent 60%);right:-10%;top:8%;animation:float 22s ease-in-out infinite reverse}
+.orb-3{width:28vmax;height:28vmax;background:radial-gradient(circle at 40% 70%, #00ffc6, transparent 60%);left:12%;bottom:-14%;animation:float 20s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+@keyframes shift{to{transform:translate3d(0,-3%,0) scale(1.02)}}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;padding:12px 18px;
+  background:linear-gradient(to bottom, rgba(6,10,16,.55), rgba(6,10,16,0));
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.brand{color:var(--txt);text-decoration:none;font-weight:700;letter-spacing:.3px}
+.main-nav a{color:var(--txt);text-decoration:none;margin:0 .45rem;padding:.45rem .75rem;border-radius:999px;transition:all .18s ease;border:1px solid transparent}
+.main-nav a:hover, .main-nav a:focus{border-color:var(--border);background:rgba(255,255,255,.03)}
+.main-nav .pill{border:1px solid rgba(122,162,255,.25)}
+
+/* Sections */
+.section{padding:clamp(56px,8vw,100px) 1rem}
+.container{max-width:1100px;margin:0 auto;padding:0 12px}
+.section-title{font-size:clamp(20px,2.6vw,28px);margin:0 0 1rem 0}
+
+/* Glass utility */
+.glass{
+  background:var(--card);
+  border:1px solid var(--border);
+  box-shadow:0 10px 30px rgba(0,0,0,.45);
+  border-radius:var(--glass-radius);
+}
+.card{padding:var(--glass-pad)}
+
+/* HERO */
+.hero{display:grid;place-items:center;min-height:78dvh;position:relative;overflow:hidden}
+.hero__wrap{max-width:920px;text-align:center;padding:clamp(22px,3.4vw,40px);border-radius:24px}
+.eyebrow{color:var(--accent);letter-spacing:.24em;text-transform:uppercase;font-weight:700}
+.title{font-size:clamp(36px,7vw,64px);margin:.2rem 0 .1rem}
+.subtitle{font-size:clamp(16px,2.8vw,22px);color:var(--muted);font-weight:600}
+.tagline{max-width:64ch;margin:0 auto 1.2rem auto}
+.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;border-radius:14px;padding:.72rem 1rem;border:1px solid var(--border);transition:transform .18s ease, box-shadow .28s ease}
+.btn:hover{transform:translateY(-3px)}
+.btn.primary{background:linear-gradient(135deg, rgba(100,255,218,.14), rgba(122,162,255,.12));border-color:rgba(100,255,218,.35)}
+.btn.primary:hover{box-shadow:0 0 0 10px rgba(100,255,218,.06)}
+.btn.ghost{background:rgba(255,255,255,.03)}
+
+/* Particle Background (hero) */
+.particle-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.particle-bg span{position:absolute;display:block;border-radius:50%;background:rgba(100,255,218,.9);opacity:.85;bottom:-20px}
+.particle-bg span:nth-child(1){left:6%;width:8px;height:8px;animation:rise 12s linear infinite}
+.particle-bg span:nth-child(2){left:14%;width:6px;height:6px;animation:rise 18s linear infinite}
+.particle-bg span:nth-child(3){left:22%;width:10px;height:10px;animation:rise 20s linear infinite}
+.particle-bg span:nth-child(4){left:36%;width:5px;height:5px;animation:rise 15s linear infinite}
+.particle-bg span:nth-child(5){left:48%;width:12px;height:12px;animation:rise 22s linear infinite}
+.particle-bg span:nth-child(6){left:62%;width:7px;height:7px;animation:rise 14s linear infinite}
+.particle-bg span:nth-child(7){left:72%;width:9px;height:9px;animation:rise 19s linear infinite}
+.particle-bg span:nth-child(8){left:82%;width:5px;height:5px;animation:rise 16s linear infinite}
+.particle-bg span:nth-child(9){left:92%;width:6px;height:6px;animation:rise 17s linear infinite}
+.particle-bg span:nth-child(10){left:96%;width:4px;height:4px;animation:rise 21s linear infinite}
+@keyframes rise{0%{transform:translateY(0) scale(1);opacity:.9}100%{transform:translateY(-120vh) scale(.6);opacity:0}}
+
+/* Layout helpers */
+.stack{display:grid;gap:1.2rem}
+.two-col{grid-template-columns:1fr}
+@media (min-width:900px){.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}}
+
+/* Skills area */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.skill-block{padding:16px}
+.skill-block h4{margin:0 0 .6rem}
+.badges{display:flex;flex-wrap:wrap;gap:.6rem}
+.skill{--logo-size:42px;display:inline-flex;align-items:center;gap:.8rem;padding:.6rem .8rem;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.06);cursor:pointer;min-width:130px;transition:transform .22s ease,box-shadow .25s}
+.skill img{width:var(--logo-size);height:var(--logo-size);transition:transform .45s ease,filter .25s;display:block}
+.skill span{font-size:.95rem;color:var(--txt)}
+
+/* Hover / focus appearance */
+.skill:hover, .skill:focus{transform:translateY(-8px);box-shadow:0 14px 36px rgba(0,0,0,.5);background:linear-gradient(135deg, rgba(122,162,255,.04), rgba(100,255,218,.03));border-color:rgba(122,162,255,.18);outline:none}
+.skill:focus{box-shadow:0 0 0 6px rgba(122,162,255,.06)}
+
+/* Specific animations for logos (CSS-only) */
+/* React: spin */
+.skill[aria-label="React"]:hover img,
+.skill[aria-label="React"]:focus img {
+  animation: spin 2s linear infinite;
+}
+/* Node.js: green glow */
+.skill[aria-label="Node.js"]:hover img,
+.skill[aria-label="Node.js"]:focus img {
+  filter:drop-shadow(0 6px 18px rgba(50,200,80,.6));
+  transform:scale(1.08);
+}
+/* MongoDB: pulse */
+.skill[aria-label="MongoDB"]:hover img,
+.skill[aria-label="MongoDB"]:focus img {
+  animation: pulse 1.4s infinite;
+}
+/* Docker: bounce */
+.skill[aria-label="Docker"]:hover img,
+.skill[aria-label="Docker"]:focus img {
+  animation: bounce 0.9s infinite;
+}
+/* Git: rotate */
+.skill[aria-label="Git"]:hover img,
+.skill[aria-label="Git"]:focus img {
+  transform: rotate(360deg) scale(1.02);
+  transition: transform .8s ease;
+}
+
+/* Keyframes */
+@keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+@keyframes pulse { 0%,100%{transform:scale(1)}50%{transform:scale(1.25)} }
+@keyframes bounce { 0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)} }
+
+/* Projects */
+.project-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+.project{padding:18px;border-radius:14px}
+.project .btn.small{padding:.5rem .8rem;font-size:.95rem}
+
+/* Contact & form */
+.contact-form label{display:block;margin:.5rem 0 .25rem}
+input,textarea{width:100%;color:var(--txt);background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;padding:.8rem;outline:none}
+input:focus,textarea:focus{border-color:rgba(122,162,255,.6);box-shadow:0 0 0 8px rgba(122,162,255,.06)}
+button[disabled]{opacity:.6;cursor:default}
+
+/* Socials */
+.socials{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.6rem}
+.socials a{text-decoration:none;color:var(--txt);padding:.45rem .6rem;border-radius:10px;border:1px solid rgba(255,255,255,.04);display:inline-block}
+.socials a:hover{border-color:rgba(122,162,255,.18);transform:translateY(-3px)}
+
+/* Footer */
+.site-footer{padding:28px;text-align:center;color:var(--muted);border-top:1px solid var(--border);background:linear-gradient(to top, rgba(255,255,255,.02), transparent)}
+
+/* Entrance subtle */
+.hero__wrap,.glass.card{opacity:0;transform:translateY(10px);animation:reveal .6s ease forwards;animation-delay:.06s}
+@keyframes reveal{to{opacity:1;transform:none}}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){.orb,.particle-bg span,.skill img,.hero__wrap{animation:none!important;transition:none!important}}
+
+/* Responsive */
+@media (max-width:900px){
+  .skill{min-width:110px}
+  .two-col{display:block}
+  .main-nav{display:flex;gap:.6rem}
+  .skill-grid{grid-template-columns:1fr}
+  .project-grid{grid-template-columns:1fr}
+  .hero__wrap{padding:20px}
+}
